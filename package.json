@@ -1,0 +1,14 @@
+{
+  "name": "revisaobackend",
+  "version": "1.0.0",
+  "description": "revisão sobre backend FICR 2020.1 2º período manhã",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aldo Moura",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
