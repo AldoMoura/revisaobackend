@@ -18,10 +18,22 @@ module.exports = {
         type: Sequelize.DATEONLY
       },
       idLista: {
-        type: Sequelize.INTEGER
+        field:"idLista",
+        allowNull:false,
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Lista",
+          key: "id"
+        }
       },
       idStatus: {
-        type: Sequelize.INTEGER
+        field:"idStatus",
+        allowNull:false,
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Statuses",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,

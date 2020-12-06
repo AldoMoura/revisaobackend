@@ -9,10 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idAtividade: {
-        type: Sequelize.INTEGER
+        field:"idAtividade",
+        allowNull:false,
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Atividade",
+          key: "id"
+        }
       },
       idUsuario: {
-        type: Sequelize.INTEGER
+        field:"idUsuario",
+        allowNull:false,
+        type: Sequelize.INTEGER,
+        references:{
+          model: "Usuarios",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,

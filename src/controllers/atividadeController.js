@@ -28,8 +28,8 @@ exports.createOne = (req, res) => {
 }
 
 exports.updateOne = (req, res) => {
-  const {nome, telefone, email} = req.body
-  Atividade.update({nome, telefone, email}, 
+  const {descricao, dataPrevista, dataExecucao, idLista, idStatus} = req.body
+  Atividade.update({descricao, dataPrevista, dataExecucao, idLista, idStatus}, 
                  {where: { id:req.params.id}}).then(atividade => {
       res.json({
        message: "Atividade atualizada com sucesso",
