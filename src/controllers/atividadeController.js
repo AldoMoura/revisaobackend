@@ -8,6 +8,17 @@ exports.listAll = (req, res) => {
   })
 }
 
+exports.listOne = (req, res) => {
+  Atividade.findAll({where: { id:req.params.id}}).then(atividade => {
+      res.json({
+       message: "Atividade listada com sucesso",
+       data: atividade
+      })
+    }).catch(error => {
+      res.send(error)      
+  })
+}
+
 exports.createOne = (req, res) => {
   console.log(Atividade)
   const {descricao, dataPrevista, dataExecucao, idLista, idStatus} = req.body
@@ -15,3 +26,27 @@ exports.createOne = (req, res) => {
     .then(atividade => { res.send(atividade) })
     .catch(error => { res.send(error) })
 }
+
+exports.updateOne = (req, res) => {
+  const {nome, telefone, email} = req.body
+  Atividade.update({nome, telefone, email}, 
+                 {where: { id:req.params.id}}).then(atividade => {
+      res.json({
+       message: "Atividade atualizada com sucesso",
+       data: atividade
+      })
+    }).catch(error => {
+      res.send(error)      
+  })
+} 
+
+exports.deleteOne = (req, res) => {
+  Atividade.destroy({where: { id:req.params.id}}).then(atividade => {
+      res.json({
+       message: "Atividade deletado com sucesso",
+       data: atividade
+      })
+    }).catch(error => {
+      res.send(error)      
+  })
+} 
