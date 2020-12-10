@@ -6,7 +6,6 @@ app.route('/usuarioRoute')
     .get(usuarioController.listAll)
     .post(usuarioController.createOne)
 
-
 app.route('/usuarioRoute/:id')
 	.get(usuarioController.listOne)
 	.put(usuarioController.updateOne)

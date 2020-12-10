@@ -1,22 +1,15 @@
 const Usuario = require('../models').Usuario
 
 exports.listAll = (req, res) => {
-  Usuario.findAll().then(usuarios => {
-    res.send(usuarios)
-  }).catch(error => {
-    res.send('Error')
-  })		
+  Usuario.findAll()
+    .then(usuario => { res.send(usuario) } )
+    .catch(error => { res.send(error) })	
 }
 
 exports.listOne = (req, res) => {
-  Usuario.findAll({where: { id:req.params.id}}).then(usuario => {
-      res.json({
-       message: "Usuario listado com sucesso",
-       data: usuario
-      })
-    }).catch(error => {
-      res.send(error)      
-  })
+  Usuario.findAll({where: { id:req.params.id}})
+    .then(usuario => { res.send(usuario) })
+    .catch(error => { res.send(error) })
 } 
 
 exports.createOne = (req, res) => {
@@ -30,24 +23,19 @@ exports.createOne = (req, res) => {
 exports.updateOne = (req, res) => {
   const {nome, telefone, email} = req.body
   Usuario.update({nome, telefone, email}, 
-                 {where: { id:req.params.id}}).then(usuario => {
-      res.json({
-       message: "Usuario atualizado com sucesso",
-       data: usuario
-      })
-    }).catch(error => {
-      res.send(error)      
-  })
+                 {where: { id:req.params.id}})
+    .then(usuario => { res.send(usuario) })
+    .catch(error => { res.send(error) })
 } 
 
 exports.deleteOne = (req, res) => {
-  Usuario.destroy({where: { id:req.params.id}}).then(usuario => {
+  Usuario.destroy( {where: { id:req.params.id}} )
+    .then(usuario => { 
       res.json({
-       message: "Usuario deletado com sucesso",
-       data: usuario
+        message: "Usuario deletado com sucesso",
+        data: usuario
       })
-    }).catch(error => {
-      res.send(error)      
-  })
+    })
+    .catch(error => { res.send(error) })
 } 
 

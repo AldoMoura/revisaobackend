@@ -1,22 +1,15 @@
 const Categoria = require('../models').Categoria
 
 exports.listAll = (req, res) => {
-  Categoria.findAll().then(categoria => {
-    res.send(categoria)
-  }).catch(error => {
-    res.send('Error')
-  })		
+  Categoria.findAll()
+    .then(categoria => { res.send(categoria) } )
+    .catch(error => { res.send('Error') })		
 }
 
 exports.listOne = (req, res) => {
-  Categoria.findAll({where: { id:req.params.id}}).then(categoria => {
-      res.json({
-       message: "Categoria listada com sucesso",
-       data: categoria
-      })
-    }).catch(error => {
-      res.send(error)      
-  })
+  Categoria.findAll({where: { id:req.params.id}})
+    .then(categoria => { res.send(categoria) })
+    .catch(error => { res.send(error) })
 }
 
 exports.createOne = (req, res) => {
@@ -29,23 +22,20 @@ exports.createOne = (req, res) => {
 exports.updateOne = (req, res) => {
   const {descricao} = req.body
   Categoria.update({descricao}, 
-                 {where: { id:req.params.id}}).then(categoria => {
-      res.json({
-       message: "Categoria atualizada com sucesso",
-       data: categoria
-      })
-    }).catch(error => { res.send(error) })
+                   {where: { id:req.params.id}} )
+    .then(categoria => { res.send(categoria) })
+    .catch(error => { res.send(error) })
 } 
 
 exports.deleteOne = (req, res) => {
-  Categoria.destroy({where: { id:req.params.id}}).then(categoria => {
+  Categoria.destroy( {where: { id:req.params.id}} )
+    .then(categoria => { 
       res.json({
-       message: "Categoria deletado com sucesso",
-       data: categoria
+        message: "Categoria deletada com sucesso",
+        data: categoria
       })
-    }).catch(error => {
-      res.send(error)      
-  })
+    })
+    .catch(error => { res.send(error) })
 } 
 
 
