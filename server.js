@@ -8,9 +8,14 @@ const express = require('express')
 // importando o body-parser
 const bodyParser = require('body-parser') 
 
+const cors = require('cors')
+
+
 /* Criando uma instancia do express. A constante app passa a representar a aplicação.
  * Está sendo chamado o construtor que vai iniciar um objeto do tipo express */
 const app = express()
+
+app.use(cors()) // enable cors
 
 /* Configurando como express (app) deve usar o body-parser 
 *  Configurar para usar a biblioteca qs (true), que permite aninhamento de objetos */
